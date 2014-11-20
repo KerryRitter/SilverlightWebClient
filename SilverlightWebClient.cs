@@ -25,7 +25,7 @@ namespace Silverlight.Net
             var result = String.Empty;
             var responseComplete = new ManualResetEvent(false);
 
-            initRequest.Headers = Headers;
+            if (Headers != null) initRequest.Headers = Headers; 
 
             initRequest.BeginGetResponse(ar =>
             {
@@ -103,7 +103,7 @@ namespace Silverlight.Net
             WebRequest.RegisterPrefix(uri.AbsoluteUri, WebRequestCreator.ClientHttp);
             var initRequest = WebRequest.Create(uri) as HttpWebRequest;
 
-            if (initRequest == null) return null;
+            if (Headers != null) initRequest.Headers = Headers; 
 
             initRequest.Headers = Headers;
 
